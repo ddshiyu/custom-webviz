@@ -37,6 +37,13 @@ export default class DocumentDropListener extends React.PureComponent<Props, Sta
   }
 
   _onDrop = async (ev: DragEvent) => {
+  console.log(ev)
+  // 获取文件名
+  const fileName = ev.dataTransfer.files[0].name;
+
+  // 在控制台输出文件名
+  window.parent.postMessage(fileName, "*");
+  console.log("拖动的文件名为：", fileName);
     const { filesSelected } = this.props;
     if (!ev.dataTransfer) {
       return;
@@ -53,6 +60,7 @@ export default class DocumentDropListener extends React.PureComponent<Props, Sta
   };
 
   _onDragOver = (ev: DragEvent) => {
+
     const { dataTransfer } = ev;
     // dataTransfer isn't guaranteed to exist by spec, so it must be checked
     if (dataTransfer && dataTransfer.types.length === 1 && dataTransfer.types[0] === "Files") {

@@ -62,7 +62,9 @@ const PlaybackTimeDisplayMethod = ({
   );
   const dispatch = useDispatch();
   const setTimeDisplayMethod = useCallback(
-    (newTimeDisplayMethod) => dispatch(setPlaybackConfig({ timeDisplayMethod: newTimeDisplayMethod })),
+    (newTimeDisplayMethod) => {
+    console.log(dispatch(setPlaybackConfig({ timeDisplayMethod: newTimeDisplayMethod })))
+    return dispatch(setPlaybackConfig({ timeDisplayMethod: newTimeDisplayMethod }))},
     [dispatch]
   );
 

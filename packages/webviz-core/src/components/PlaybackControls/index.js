@@ -12,7 +12,7 @@ import PlayIcon from "@mdi/svg/svg/play.svg";
 import SkipNextOutlineIcon from "@mdi/svg/svg/skip-next-outline.svg";
 import SkipPreviousOutlineIcon from "@mdi/svg/svg/skip-previous-outline.svg";
 import classnames from "classnames";
-import React, { memo, useCallback, useMemo, useRef, useState } from "react";
+import React, { memo, useCallback, useMemo, useRef, useState, useEffect } from "react";
 import type { Time } from "rosbag";
 import styled from "styled-components";
 import uuid from "uuid";
@@ -188,13 +188,23 @@ export const UnconnectedPlaybackControls = memo<PlaybackControlProps>((props: Pl
     ),
     [max, min, onChange, step, value]
   );
-
+    const handleOperate = () => {
+     console.log(value)
+     window.parent.postMessage({value, startTime, endTime}, "*");
+     return isPlaying ? pause() : play()
+  }
+  useEffect(() => {
+    if (startTime) {
+      console.log(startTime)
+      window.parent.postMessage({startTime, endTime}, "*");
+    }
+  }, [startTime])
   return (
     <Flex row className={styles.container}>
       <KeyListener global keyDownHandlers={keyDownHandlers} />
       <MessageOrderControls />
       <PlaybackSpeedControls />
-      <div className={styles.playIconWrapper} onClick={isPlaying ? pause : play}>
+            <div className={styles.playIconWrapper} onClick={handleOperate}>
         <Icon style={activeData ? {} : { opacity: 0.4 }} xlarge>
           {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </Icon>
