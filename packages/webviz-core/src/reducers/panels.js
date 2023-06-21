@@ -104,7 +104,9 @@ export function getInitialPersistedStateAndMaybeUpdateLocalStorageAndURL(history
   if (initialPersistedState == null) {
     const defaultPersistedState = Object.freeze(getGlobalHooks().getDefaultPersistedState());
     const oldPersistedState: any = storage.getItem(GLOBAL_STATE_STORAGE_KEY);
-
+    if (oldPersistedState) {
+      setPersistedStateInLocalStorage({})
+    }
     const newPersistedState = cloneDeep(defaultPersistedState);
 
     const { search: currentSearch, pathname } = history.location || {};
