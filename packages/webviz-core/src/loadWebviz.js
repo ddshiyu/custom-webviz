@@ -106,7 +106,7 @@ const defaultHooks = {
                 "second": "RosOut!2dwmi3h",
                 "direction": "column"
               },
-              "second": "3D Panel!1t2cjaa",
+              "second": "ImageViewPanel!3rq71su",
               "splitPercentage": 28.985465837575276
             },
             "splitPercentage": 16.43238002908386
@@ -171,85 +171,19 @@ const defaultHooks = {
             "minLogLevel": 2,
             "topicToRender": "/rosout"
           },
-          "3D Panel!1t2cjaa": {
-            "checkedKeys": [
-              "name:Topics",
-              "t:/minibus/left/lslidar_point_cloud",
-              "t:/yjkj_vector_map/leftborder_marker",
-              "t:/yjkj_vector_map/rightborder_marker",
-              "t:/yjkj_vector_map/guidance_marker",
-              "t:/yjkj_vector_map/jb_marker",
-              "ns:/tf:base_link",
-              "t:/minibus/fusion_velocity_marker",
-              "t:/minibus/plan_result",
-              "ns:/minibus/plan_result:decision_result",
-              "ns:/minibus/plan_result:ego_car_marker",
-              "ns:/minibus/plan_result:end_speed",
-              "ns:/minibus/plan_result:plan_result",
-              "t:/vehicle_pose",
-              "t:/minibus/fusion_polygon_marker",
-              "t:/minibus/realtime_cost_map",
-              "t:/tf",
-              "t:/minibus/fusion_bbox_marker",
-              "ns:/metadata:height",
-              "t:/points_concat"
-            ],
-            "expandedKeys": [
-              "name:Topics",
-              "t:/yjkj_vector_map/rightborder_marker",
-              "t:/minibus/fusion_polygon_marker"
-            ],
-            "followTf": "base_link",
-            "cameraState": {
-              "distance": 24.388062189234365,
-              "perspective": true,
-              "phi": 1.1261187957689203,
-              "targetOffset": [
-                -5.114420646861779,
-                -3.155893685828353,
-                0
-              ],
-              "thetaOffset": -18.834277539885928,
-              "fovy": 0.7853981633974483,
-              "near": 0.01,
-              "far": 5000
-            },
-            "modifiedNamespaceTopics": [
-              "/tf",
-              "/metadata",
-              "/minibus/plan_result"
-            ],
-            "pinTopics": false,
-            "settingsByKey": {
-              "ns:/yjkj_vector_map/leftborder_marker:basic_shapes": {
-                "overrideColor": {
-                  "r": 0.1803921568627451,
-                  "g": 0.19607843137254902,
-                  "b": 0.5058823529411764,
-                  "a": 1
-                }
-              },
-              "ns:/yjkj_vector_map/rightborder_marker:basic_shapes": {
-                "overrideColor": {
-                  "r": 0.1803921568627451,
-                  "g": 0.19607843137254902,
-                  "b": 0.5058823529411764,
-                  "a": 1
-                }
-              },
-              "ns:/minibus/fusion_polygon_marker:/fusion_hull_markers": {
-                "overrideColor": {
-                  "r": 0.10980392156862745,
-                  "g": 0.19215686274509805,
-                  "b": 0.5882352941176471,
-                  "a": 1
-                }
-              }
-            },
-            "autoSyncCameraState": false,
-            "autoTextBackgroundColor": true,
-            "topicDisplayMode": "SHOW_ALL",
-            "searchText": ""
+          "ImageViewPanel!3rq71su": {
+            "cameraTopic": "",
+            "enabledMarkerTopics": [],
+            "customMarkerTopicOptions": [],
+            "scale": 0.2,
+            "transformMarkers": true,
+            "synchronize": false,
+            "mode": "fit",
+            "zoomPercentage": 33.958333333333336,
+            "offset": [
+              0,
+              15.625
+            ]
           }
         },
         "globalVariables": {},
@@ -465,8 +399,7 @@ export async function loadWebviz(hooksToSet) {
         Confirm({
           title: "Update your browser",
           prompt: chromeVersion === 0 ?
-            `You are not using Google Chrome. Please use Chrome ${MINIMUM_CHROME_VERSION} or later to continue.` :
-            `Chrome ${chromeVersion} is not supported. Please use Chrome ${MINIMUM_CHROME_VERSION} or later to continue.`,
+            `You are not using Google Chrome. Please use Chrome ${MINIMUM_CHROME_VERSION} or later to continue.` : `Chrome ${chromeVersion} is not supported. Please use Chrome ${MINIMUM_CHROME_VERSION} or later to continue.`,
           confirmStyle: "primary",
           ok: chromeVersion === 0 ? "Download Chrome" : "Update Chrome",
           cancel: "Continue anyway",

@@ -49,6 +49,7 @@ export default class DocumentDropListener extends React.PureComponent<Props, Sta
       return;
     }
     const { files } = ev.dataTransfer;
+    console.log(files)
     // allow event to bubble for non-file based drag and drop
     if (!files.length) {
       return;
